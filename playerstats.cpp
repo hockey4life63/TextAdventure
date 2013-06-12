@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <time.h>
 using namespace std;
-
 class player{
 public:
 	int health;
@@ -39,12 +40,13 @@ void monster::setStats(int hp, int ap, int dp, int mp,string startName){
 }
 void combat(monster M1,player player1);
 int main(){
+	srand(time(0));
 	monster1.setStats(10, 5, 5, 0, "tom");
 	p1.setStats(10,7,5,0,"Alex");
 	combat(monster1, p1);
 }
 void combat(monster M1,player player1){
-	int blockedDmg=(rand()% M1.defense);
+	int blockedDmg=rand()% M1.defense;
 	int applyDmg=player1.attack-blockedDmg;
 	M1.health-=applyDmg;
 	if(applyDmg==0){
